@@ -50,19 +50,22 @@ public class CreateBounty {
         liveUntil = payload.getString("liveUntil");
         applicantNumber = payload.getInt("applicantNumber");
         owner = payload.getString("owner");
+        String tx = payload.getString("tx");
 
         //save to db 
         try{
             
             Connection connection = DBConnectionM.getConnection();
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO bounty (description, price, liveUntil, applicantNumber, owner) VALUES (?,?,?,?,?)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO bounty (description, price, liveUntil, applicantNumber, owner,tx) VALUES (?,?,?,?,?,?)");
             ps.setString(1, description);
             ps.setString(2, price);
             ps.setString(3, liveUntil);
             ps.setInt(4, applicantNumber);
             ps.setString(5, owner);
+            ps.setString(6, tx);
             ps.executeUpdate();
             DBConnectionM.closeConnection(connection);
+
 
         }catch(Exception e){
             e.printStackTrace();
@@ -70,7 +73,8 @@ public class CreateBounty {
 
         JSONObject toRet = new JSONObject();
         toRet.put("message", "Bounty created");
+        toRet.put("url",request.getHeaders().get("origin"));
 
-        return request.createResponseBuilder(HttpStatus.OK).body("Bounty created").build();
+        return request.createResponseBuilder(HttpStatus.OK).body(toRet.toString()).build();
     }
 }

@@ -39,7 +39,7 @@ public class GetBounties {
                 JSONObject bounty = new JSONObject();
                 bounty.put("id", rs.getInt("id"));
                 bounty.put("description", rs.getString("description"));
-                bounty.put("price", rs.getString("price"));
+                bounty.put("prize", rs.getString("price"));
                 bounty.put("liveUntil", rs.getString("liveUntil"));
                 bounty.put("applicantNumber", rs.getInt("applicantNumber"));
                 bounty.put("owner", rs.getString("owner"));

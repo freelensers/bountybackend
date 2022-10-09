@@ -19,7 +19,7 @@ public class GetBounty {
      */
     @FunctionName("GetBounty")
     public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         JSONObject toRet = new JSONObject();
         String bountyId = request.getQueryParameters().get("id");

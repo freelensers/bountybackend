@@ -74,7 +74,7 @@ public class VerifyHumanity {
         try{
         //make http request
             //adding to verification response.
-            verificationResponse.put("action_id", "wid_staging_596c03ac5927bce7957ef868d1484240");
+            verificationResponse.put("action_id", "wid_1605111f35f359273d51e06c127a8f7c");
             verificationResponse.put("signal", "my_signal");
             context.getLogger().info(verificationResponse.toString());
 
